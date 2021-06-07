@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ESNEXT",
     "module": "commonjs",
-    "allowJs": true,
+    "lib": ["ES2015", "es6", "dom"],
     "jsx": "react",
     "outDir": "./build",
     "strict": true,
@@ -18,5 +18,6 @@
       ]
     }
   },
-  "include": ["src", "**/*.ts"]
+  "include": ["src", "src/**/*.ts"],
+  "exclude": ["node_modules", "config"]
 }
