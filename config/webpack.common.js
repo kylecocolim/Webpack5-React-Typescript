@@ -14,13 +14,14 @@ module.exports = {
         path: path.join(ROOT, 'build'),
         publicPath: '/',
         chunkFilename: 'static/js/[name].js',
-        filename: 'static/js/bundle.js',
+        filename: 'static/js/[contenthash].js',
     },
     resolve: {
         modules: ['../node_modules'],
         extensions: ['.tsx', '.js', '.ts'],
         alias: {
             assets: path.resolve(__dirname, '../src/assets'),
+            style: path.resolve(__dirname, '../src/style'),
             '@': path.resolve(__dirname, 'src/')
         }
     },
@@ -60,7 +61,15 @@ module.exports = {
                         }
                     }
                 ]
-            }
+            },
+            {
+                test: /\.(ico|png|jpg|jpeg|gif)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: 'url-loader',
+                options: {
+                    name: 'static/media/[contenthash].[ext]',
+                    limit: 10000,
+                },
+            },
         ]
     },
     plugins: [
@@ -70,8 +79,8 @@ module.exports = {
         }),
         new NodePolyfillPlugin(),
         new MiniCssExtractPlugin({
-            filename: 'static/css/[name].[hash:8].css',
-            chunkFilename: 'static/css/[id].[hash:8].css',
+            filename: 'static/css/[name].[contenthash].css',
+            chunkFilename: 'static/css/[id].[contenthash].css',
         }),
     ],
 }

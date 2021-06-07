@@ -11,7 +11,12 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": "src"
+    "baseUrl": ".",
+    "paths": {
+      "appSrc/*": [
+        "src/*"
+      ]
+    }
   },
-  "include": ["src"]
+  "include": ["src", "**/*.ts"]
 }
