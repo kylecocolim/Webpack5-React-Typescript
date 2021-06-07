@@ -45,6 +45,6 @@
     "build": "export MODE=production && webpack --config config/webpack.prod.js",
     "nginx:build" : "docker build -t frontend:latest .",
     "nginx:run" : "docker run -p 80:80 -v $PWD/log/nginx:/var/log/nginx frontend:latest",
-    "serve": "yarn build && yarn nginx:build && yarn nginx:run"
+    "serve": "yarn nginx:build && yarn nginx:run"
   }
 }
