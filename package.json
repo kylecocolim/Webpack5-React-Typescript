@@ -43,6 +43,8 @@
   "scripts": {
     "start": "export MODE=development && webpack serve --config config/webpack.dev.js",
     "build": "export MODE=production && webpack --config config/webpack.prod.js",
-    "serve": "docker build -t webpack . && docker run -p 80:80 -v $PWD/log/nginx:/var/log/nginx webpack"
+    "nginx:build" : "docker build -t frontend:latest .",
+    "nginx:run" : "docker run -p 80:80 -v $PWD/log/nginx:/var/log/nginx frontend:latest",
+    "serve": "yarn build && yarn nginx:build && yarn nginx:run"
   }
 }
