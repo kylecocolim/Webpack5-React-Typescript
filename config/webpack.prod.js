@@ -30,7 +30,14 @@ module.exports = merge(common, {
         new CleanWebpackPlugin(),
         new CopyPlugin({
             patterns: [
-                { from: "public", to: "build" },
+                {
+                    from: "public", to: "public",
+                    globOptions: {
+                        dot: true,
+                        gitignore: true,
+                        ignore: ["index.html"],
+                    }
+                },
             ],
         }),
     ],
