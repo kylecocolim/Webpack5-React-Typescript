@@ -22,7 +22,7 @@ services:
   frontend:
     build:
       context: .
-      dockerfile: .
+      dockerfile: ./nginx/Dockerfiles
     image: "frontend"
     container_name: "simple_frontend"
     labels:
