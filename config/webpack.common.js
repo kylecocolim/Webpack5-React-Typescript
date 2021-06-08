@@ -9,7 +9,9 @@ console.log("\x1b[33m", `WebPack Version : ${webpack.version}`);
 const ROOT = path.resolve(__dirname, '../')
 module.exports = {
     mode: "development",
-    entry: './src/index.tsx',
+    entry: {
+        main: './src/index.tsx',
+    },
     output: {
         path: path.join(ROOT, 'build'),
         publicPath: '/',

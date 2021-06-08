@@ -17,6 +17,6 @@ module.exports = merge(common, {
         hot: true,
         liveReload: true,
         historyApiFallback: true,
-        disableHostCheck: true,
+        disableHostCheck: true, // Access Allow Host
     },
 })

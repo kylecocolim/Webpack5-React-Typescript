@@ -1,0 +1,38 @@
+version: "3.9" # With Traefik
+services:
+  traefik:
+    image: "traefik:v2.4"
+    container_name: "traefik"
+    command:
+      #- "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--api.dashboard=true"
+      - "--providers.docker=true" # Docker Provider Binding
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    networks:
+      - proxy
+      - default
+
+  frontend:
+    build:
+      context: .
+      dockerfile: .
+    image: "frontend"
+    container_name: "simple_frontend"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.frontend.rule=Host(`localhost`)"
+      - "traefik.http.routers.frontend.entrypoints=web"
+    networks:
+      - proxy
+
+networks:
+  external_default:
+    external: true
+  proxy:

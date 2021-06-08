@@ -1,5 +1,11 @@
 # React + Webpack 5 + Typescript 
 
+## Info
+```
+    Typescript Type Declare
+    - ./src/types/types.d.ts
+```
+
 ## Scripts
 
 ```

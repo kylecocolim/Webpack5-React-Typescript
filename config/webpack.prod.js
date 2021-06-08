@@ -15,7 +15,7 @@ module.exports = merge(common, {
                 keep_fnames: false,
             }
         })],
-        runtimeChunk: 'single',
+        runtimeChunk: true,
         splitChunks: {
             cacheGroups: {
                 vendor: {
