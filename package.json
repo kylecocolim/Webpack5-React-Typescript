@@ -18,12 +18,14 @@
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "copy-webpack-plugin": "^9.0.0",
     "css-loader": "^5.2.6",
+    "fibers": "^5.0.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^1.6.0",
     "morgan": "^1.10.0",
     "node-polyfill-webpack-plugin": "^1.1.2",
     "node-sass": "^6.0.0",
+    "sass": "^1.34.1",
     "sass-loader": "^12.0.0",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.3",
@@ -42,8 +44,8 @@
   "scripts": {
     "start": "webpack serve --config config/webpack.dev.js",
     "build": "webpack --config config/webpack.prod.js",
-    "nginx:build" : "docker build -t frontend:latest .",
-    "nginx:run" : "docker run -p 80:80 -v $PWD/log/nginx:/var/log/nginx frontend:latest",
+    "nginx:build": "docker build -t frontend:latest .",
+    "nginx:run": "docker run -p 80:80 -v $PWD/log/nginx:/var/log/nginx frontend:latest",
     "serve": "yarn nginx:build && yarn nginx:run"
   }
 }

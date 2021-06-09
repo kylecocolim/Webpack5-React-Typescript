@@ -15,8 +15,8 @@ module.exports = {
     output: {
         path: path.join(ROOT, 'build'),
         publicPath: '/',
-        chunkFilename: 'static/js/[name].js',
-        filename: 'static/js/[contenthash].js',
+        chunkFilename: 'static/js/[name].[contenthash].js',
+        filename: 'static/js/[name].[contenthash].js',
     },
     resolve: {
         modules: ['../node_modules'],
@@ -42,8 +42,21 @@ module.exports = {
                 use: [MiniCssExtractPlugin.loader, "css-loader"],
             },
             {
-                test: /\.s(c|a)ss$/i,
-                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+                test: /\.s[ac]ss$/i,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            implementation: require("sass"),
+                            sourceMap: true,
+                            sassOptions: {
+                                fiber: require("fibers"),
+                            },
+                        },
+                    },
+                ],
             },
             {
                 test: /\.(woff(2)?|ttf|eot|svg|otf)(\?v=\d+\.\d+\.\d+)?$/,

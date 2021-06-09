@@ -14,7 +14,7 @@ module.exports = merge(common, {
         clientLogLevel: 'info',
         compress: true, // gzip Compress Delivery
         overlay: true,
-        hot: true, 
+        hot: true,
         liveReload: true,
         historyApiFallback: true,
         disableHostCheck: true, // Access Allow Host

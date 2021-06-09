@@ -10,7 +10,7 @@ module.exports = merge(common, {
         minimize: true,
         minimizer: [new TerserPlugin({
             terserOptions: {
-                ecma: 5,
+                ecma: 8,
                 mangle: true,
                 keep_fnames: false,
             }
@@ -28,6 +28,7 @@ module.exports = merge(common, {
     },
     plugins: [
         new CleanWebpackPlugin(),
+        /*
         new CopyPlugin({
             patterns: [
                 {
@@ -40,5 +41,6 @@ module.exports = merge(common, {
                 },
             ],
         }),
+        */
     ],
 })
